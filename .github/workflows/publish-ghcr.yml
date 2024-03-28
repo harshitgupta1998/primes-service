@@ -32,6 +32,6 @@ jobs:
 
       - name: Build and push the image
         run: |
-          docker login --username bindubheesetty --password ${{secrets.ACCESS_TOKEN}} ghcr.io
-          docker build -t ghcr.io/bindubheesetty/primes-service:latest --file Dockerfile .  
-          docker push ghcr.io/bindubheesetty/primes-service:latest
+          docker login --username harshitgupta1998 --password ${{secrets.ACCESS_TOKEN}} ghcr.io
+          docker build -t ghcr.io/harshitgupta1998/primes-service:latest --file Dockerfile .  
+          docker push ghcr.io/harshitgupta1998/primes-service:latest
