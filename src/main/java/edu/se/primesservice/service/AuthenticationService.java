@@ -15,20 +15,19 @@ import java.io.OutputStream;
 
 @Service
 public class AuthenticationService implements IAuthenticationService, UserDetailsService {
-
-    IAuthenticationRepository iAuthenticationRepository;
-
-    public AuthenticationService(IAuthenticationRepository iAuthenticationRepository) {
-        this.iAuthenticationRepository = iAuthenticationRepository;
-    }
+    AuthenticationDBRepository authenticationRepository;
+    public AuthenticationService(
+            AuthenticationDBRepository authenticationRepository) {
+        this.authenticationRepository = authenticationRepository;
+            }
 
     @Override
-    public boolean register(Customer customer) throws IOException {
+    public Customer register(Customer customer) throws IOException {
         System.out.println(customer);
         BCryptPasswordEncoder bc = new BCryptPasswordEncoder();
         String passwordEncoded = bc.encode(customer.getPassword());
         customer.setPassword(passwordEncoded);
-        return iAuthenticationRepository.save(customer);
+        return authenticationRepository.save(customer);
     }
 
     @Override
