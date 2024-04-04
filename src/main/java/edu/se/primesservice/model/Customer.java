@@ -5,7 +5,7 @@ import org.springframework.data.annotation.Id;
 @Table
 @Entity
 public class Customer {
-    @Id
+@Id
     private String username;
     private String password;
     public Customer(){
