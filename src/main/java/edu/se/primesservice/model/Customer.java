@@ -1,10 +1,12 @@
 package edu.se.primesservice.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Id;
+
 @Table
 @Entity
 public class Customer {
+@Id
     private String username;
     private String password;
     public Customer(){
