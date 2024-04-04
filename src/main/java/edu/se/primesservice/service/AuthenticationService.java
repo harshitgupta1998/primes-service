@@ -2,6 +2,7 @@ package edu.se.primesservice.service;
 
 
 import edu.se.primesservice.model.Customer;
+import edu.se.primesservice.repository.AuthenticationDBRepository;
 import edu.se.primesservice.repository.IAuthenticationRepository;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -38,7 +39,7 @@ public class AuthenticationService implements IAuthenticationService, UserDetail
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
             try{
-                Customer customer = iAuthenticationRepository.findByUsername(username);
+                Customer customer = authenticationRepository.findByUsername(username);
                 if(customer==null){
                     throw new UsernameNotFoundException("");
                 }
@@ -47,7 +48,7 @@ public class AuthenticationService implements IAuthenticationService, UserDetail
                         .password(customer.getPassword())
                         .build();
             }
-            catch (IOException e){
+            catch (UsernameNotFoundException e){
                 throw new RuntimeException(e);
             }
 
